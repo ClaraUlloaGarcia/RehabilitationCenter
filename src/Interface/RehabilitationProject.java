@@ -5,6 +5,7 @@
  */
 package Interface;
 
+import java.net.URL;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -19,7 +20,9 @@ public class RehabilitationProject extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+        Class clas = getClass();
+        URL resourceURL = clas.getResource("FXMLLogin1.fxml");
+        Parent root = FXMLLoader.load(resourceURL);
         
         Scene scene = new Scene(root);
         

@@ -10,9 +10,9 @@
         <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
       <Label layoutX="70.0" layoutY="49.0" text="User" />
       <Label layoutX="57.0" layoutY="91.0" text="Password" />
-      <TextField layoutX="126.0" layoutY="45.0" />
-      <TextField layoutX="126.0" layoutY="87.0" />
-      <Button layoutX="134.0" layoutY="137.0" mnemonicParsing="false" text="Accept" />
+      <TextField id="userTextField" fx:id="userTextField" layoutX="126.0" layoutY="45.0" />
+      <TextField fx:id="passwordTextField" layoutX="126.0" layoutY="87.0" />
+      <Button layoutX="134.0" layoutY="137.0" mnemonicParsing="false" onMouseClicked="#login" text="Accept" />
       <AnchorPane prefHeight="200.0" prefWidth="3.0" />
       <Button layoutX="200.0" layoutY="137.0" mnemonicParsing="false" text="New Patient" />
     </children>

@@ -68,7 +68,7 @@ public class BITalino {
 	private DataOutputStream oStream = null;
 	
 	public BITalino() {}
-	
+
 	public Vector<RemoteDevice> findDevices() throws InterruptedException
 	{
 	        /** Searches for Bluetooth devices in range.

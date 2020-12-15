@@ -3,7 +3,6 @@ package Patient;
 import BITalino.BITalino;
 import java.io.*;
 import java.net.*;
-import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import BITalino.BITalinoManager;
@@ -21,7 +20,7 @@ public class Patient {
     public double height;
     public int flex_ang;
     public int turn_ang;
-    ArrayList<Integer>bitalino;
+    //ArrayList<Integer>bitalino;
 
     public Socket socket;
     public PrintWriter pw;
