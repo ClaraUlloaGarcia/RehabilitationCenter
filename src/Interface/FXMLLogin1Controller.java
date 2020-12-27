@@ -5,6 +5,10 @@
  */
 package Interface;
 
+import Patient.ServerConnection;
+import commands.LoginCommand;
+import commands.Response;
+import java.net.Socket;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -31,8 +35,19 @@ public class FXMLLogin1Controller implements Initializable {
     
     @FXML
     private void handleButtonAction(ActionEvent event) {
-        System.out.println("You clicked me!");
-        label.setText("Hello World!");
+        String user = userTextField.getText();
+        String password = passwordTextField.getText();
+        Socket serverSocket = ServerConnection.getInstance().getSocket();
+        Response response = new LoginCommand (serverSocket).login(user, password);
+         
+        if(response.isSuccess()) {
+            System.out.println("OK");
+        }
+        else{
+            System.out.println("ERROR");
+            System.exit(1);
+        }
+        
     }
    // @FXML
     /*private void ok(ActionEvent event) {

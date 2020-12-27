@@ -5,11 +5,14 @@
  */
 package Interface;
 
+import Patient.ServerConnection;
 import java.net.URL;
+import java.util.Optional;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TextInputDialog;
 import javafx.stage.Stage;
 
 /**
@@ -17,6 +20,7 @@ import javafx.stage.Stage;
  * @author ClaraU
  */
 public class RehabilitationProject extends Application {
+    
     
     @Override
     public void start(Stage stage) throws Exception {
@@ -27,7 +31,20 @@ public class RehabilitationProject extends Application {
         Scene scene = new Scene(root);
         
         stage.setScene(scene);
-        stage.show();
+        
+        
+        TextInputDialog ipDialog = new TextInputDialog("Please introduce Server IP");
+        Optional<String> result = ipDialog.showAndWait();
+        
+        if(result.isPresent()) {
+            final String IP = ipDialog.getEditor().getText();
+            ServerConnection.getInstance().setIP(IP);
+            stage.show();
+        } else {
+            System.exit(0);
+        }
+        
+        
     }
 
     /**
