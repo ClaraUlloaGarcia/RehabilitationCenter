@@ -11,13 +11,12 @@
         <URL value="@fxml2.css" />
     </stylesheets>
    <children>
-      <TextField layoutX="321.0" layoutY="175.0" />
-      <TextField layoutX="321.0" layoutY="245.0" />
+      <TextField fx:id="bendingVariable" layoutX="321.0" layoutY="175.0" />
+      <TextField fx:id="turningVariable" layoutX="321.0" layoutY="245.0" />
       <Label layoutX="152.0" layoutY="179.0" text="BENDING ANGLE" />
       <Label layoutX="152.0" layoutY="249.0" text="TURNING ANGLE" />
-      <Label layoutX="169.0" layoutY="112.0" text="STRENGTH" />
-      <Button layoutX="272.0" layoutY="313.0" mnemonicParsing="false" text="Update" />
-      <TextField layoutX="320.0" layoutY="108.0" />
-      <Label layoutX="285.0" layoutY="62.0" text="Introduce the MAC Address of your Bitalino:" />
+      <Button layoutX="272.0" layoutY="313.0" mnemonicParsing="false" onAction="#update" text="Update" />
+      <Label layoutX="125.0" layoutY="61.0" text="Bitalino MAC Address:" />
+      <TextField fx:id="MACVariable" layoutX="321.0" layoutY="57.0" />
    </children>
 </AnchorPane>

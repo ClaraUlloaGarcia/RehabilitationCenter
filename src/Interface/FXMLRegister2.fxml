@@ -2,24 +2,24 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="Interface.FXMLRegister2Controller">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Interface.FXMLRegister2Controller">
    <children>
-      <TextField layoutX="109.0" layoutY="92.0" />
-      <TextField layoutX="346.0" layoutY="92.0" />
-      <TextField layoutX="109.0" layoutY="174.0" />
-      <TextField layoutX="109.0" layoutY="269.0" />
-      <TextField layoutX="355.0" layoutY="269.0" />
-      <Label layoutX="172.0" layoutY="61.0" prefHeight="17.0" prefWidth="21.0" text="ID" />
-      <Label layoutX="412.0" layoutY="61.0" text="Name" />
+      <TextField fx:id="nameRegister" layoutX="108.0" layoutY="95.0" />
+      <TextField fx:id="ageRegister" layoutX="109.0" layoutY="174.0" />
+      <TextField fx:id="weightRegister" layoutX="109.0" layoutY="269.0" />
+      <TextField fx:id="heightRegister" layoutX="355.0" layoutY="269.0" />
+      <Label layoutX="166.0" layoutY="56.0" text="Name" />
       <Label layoutX="172.0" layoutY="149.0" text="Age" />
       <Label layoutX="164.0" layoutY="235.0" text="Weight" />
       <Label layoutX="411.0" layoutY="235.0" prefHeight="17.0" prefWidth="36.0" text="Height" />
       <Label layoutX="408.0" layoutY="149.0" text="Gender" />
-      <TextField layoutX="354.0" layoutY="174.0" />
-      <Button layoutX="280.0" layoutY="326.0" mnemonicParsing="false" text="Register" />
+      <TextField fx:id="genderRegister" layoutX="354.0" layoutY="174.0" />
+      <Button layoutX="280.0" layoutY="326.0" mnemonicParsing="false" onAction="#register" text="Register" />
+      <PasswordField fx:id="passwordRegister" layoutX="353.0" layoutY="95.0" />
+      <Label layoutX="404.0" layoutY="56.0" text="Password" />
    </children>
 </AnchorPane>
