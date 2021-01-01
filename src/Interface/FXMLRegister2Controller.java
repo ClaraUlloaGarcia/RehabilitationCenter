@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Interface;
 
 import Patient.ServerConnection;
@@ -25,40 +20,31 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-/**
- * FXML Controller class
- *
- * @author ClaraU
- */
 public class FXMLRegister2Controller implements Initializable {
 
-    /**
-     * Initializes the controller class.
-     */
-    
     @FXML
     TextField nameRegister;
-    
+
     @FXML
     TextField passwordRegister;
-    
+
     @FXML
     TextField genderRegister;
-    
+
     @FXML
     TextField ageRegister;
-    
+
     @FXML
     TextField weightRegister;
-    
+
     @FXML
     TextField heightRegister;
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-    
+    }
+
     @FXML
     private void register(ActionEvent event) {
         String name = nameRegister.getText();
@@ -68,36 +54,31 @@ public class FXMLRegister2Controller implements Initializable {
         String weight = weightRegister.getText();
         String height = heightRegister.getText();
         Socket serverSocket = ServerConnection.getInstance().getSocket();
-        if(serverSocket == null) {
+        if (serverSocket == null) {
             Alert alert = new Alert(AlertType.INFORMATION);
-            alert.setContentText("Could not connect to server."); 
-            alert.show(); 
+            alert.setContentText("Could not connect to server.");
+            alert.show();
             return;
         }
-        Response response = new RegisterCommand (serverSocket).register(name, password, gender, age, weight, height);
-         
-        if(response.isSuccess()) {
+        Response response = new RegisterCommand(serverSocket).register(name, password, gender, age, weight, height);
+
+        if (response.isSuccess()) {
             try {
-            //Botón Nuevo Paciente de la ventana Login
-            Class clas = getClass();
-            URL resourceURL = clas.getResource("FXMLVariables3.fxml");
-            Parent root = FXMLLoader.load(resourceURL);
-            Scene scene = new Scene(root);
+                Class clas = getClass();
+                URL resourceURL = clas.getResource("FXMLVariables3.fxml");
+                Parent root = FXMLLoader.load(resourceURL);
+                Scene scene = new Scene(root);
 
-            Stage stage = (Stage) nameRegister.getScene().getWindow();
-            stage.setScene(scene);
+                Stage stage = (Stage) nameRegister.getScene().getWindow();
+                stage.setScene(scene);
 
-        } catch (IOException ex) {
-            Logger.getLogger(FXMLLogin1Controller.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        }
-        else{
+            } catch (IOException ex) {
+                Logger.getLogger(FXMLLogin1Controller.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
             Alert alert = new Alert(AlertType.INFORMATION);
-            alert.setContentText("Fail to register."); 
-            alert.show(); 
-            
+            alert.setContentText("Fail to register.");
+            alert.show();
         }
-        
     }
-    
 }

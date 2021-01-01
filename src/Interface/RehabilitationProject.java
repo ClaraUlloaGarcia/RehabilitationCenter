@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Interface;
 
 import Patient.ServerConnection;
@@ -15,12 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.TextInputDialog;
 import javafx.stage.Stage;
 
-/**
- *
- * @author ClaraU
- */
 public class RehabilitationProject extends Application {
-    
     
     @Override
     public void start(Stage stage) throws Exception {
@@ -29,9 +20,7 @@ public class RehabilitationProject extends Application {
         Parent root = FXMLLoader.load(resourceURL);
         
         Scene scene = new Scene(root);
-        
         stage.setScene(scene);
-        
         
         TextInputDialog ipDialog = new TextInputDialog("Please introduce Server IP");
         Optional<String> result = ipDialog.showAndWait();
@@ -43,8 +32,6 @@ public class RehabilitationProject extends Application {
         } else {
             System.exit(0);
         }
-        
-        
     }
 
     /**
@@ -52,6 +39,5 @@ public class RehabilitationProject extends Application {
      */
     public static void main(String[] args) {
         launch(args);
-    }
-    
+    }  
 }

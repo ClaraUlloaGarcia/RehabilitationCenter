@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Interface;
 
 import Patient.ServerConnection;
@@ -27,10 +23,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-/**
- *
- * @author ClaraU
- */
 public class FXMLLogin1Controller implements Initializable {
     
     @FXML
@@ -55,28 +47,25 @@ public class FXMLLogin1Controller implements Initializable {
         }
         Response response = new LoginCommand (serverSocket).login(user, password);
          
-        if(response.isSuccess()) {
-             try {
-            //Botón Nuevo Paciente de la ventana Login
-            Class clas = getClass();
-            URL resourceURL = clas.getResource("FXMLVariables3.fxml");
-            Parent root = FXMLLoader.load(resourceURL);
-            Scene scene = new Scene(root);
+        if (response.isSuccess()) {
+            try {
+                Class clas = getClass();
+                URL resourceURL = clas.getResource("FXMLVariables3.fxml");
+                Parent root = FXMLLoader.load(resourceURL);
+                Scene scene = new Scene(root);
 
-            Stage stage = (Stage) userTextField.getScene().getWindow();
-            stage.setScene(scene);
+                Stage stage = (Stage) userTextField.getScene().getWindow();
+                stage.setScene(scene);
 
-        } catch (IOException ex) {
-            Logger.getLogger(FXMLLogin1Controller.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        }
-        else{
+            } catch (IOException ex) {
+                Logger.getLogger(FXMLLogin1Controller.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
             Alert alert = new Alert(AlertType.INFORMATION);
-            alert.setContentText("Fail to login."); 
-            alert.show(); 
-            
+            alert.setContentText("Fail to login.");
+            alert.show();
+
         }
-        
     }
     
     @FXML
@@ -96,10 +85,8 @@ public class FXMLLogin1Controller implements Initializable {
         }
     }
     
- 
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        
+    public void initialize(URL url, ResourceBundle rb){  
     }    
     
 }

@@ -1,12 +1,9 @@
 package Patient;
 
-import BITalino.BITalino;
 import java.io.*;
 import java.net.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import BITalino.BITalinoManager;
-
 
 public class Patient {
 
@@ -38,47 +35,33 @@ public class Patient {
         this.flex_ang = flex_ang;
         this.turn_ang = turn_ang;
         //bitalino = new BITalino();
-        
+
         socket = new Socket("localhost" /*ip*/, 9000);
         //OutputStream outputStream = socket.getOutputStream();
         pw = new PrintWriter(socket.getOutputStream(), true);
         br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-        
+
         //cada paciente tiene sus parámetros, un socket que establece la 
         //conexion con el servidor y un pw (paciente - servidor) y br (servidor - paciente)
     }
 
-    public String logPatient() throws IOException { //EXPLICAR LO QUE DEVUELVE
+    public String logPatient() throws IOException {
 
         System.out.println("Logging new Patient");
         System.out.println("Sending data");
-        //String connect = "I want to stablish connection";
-        //Socket socket = new Socket("localhost" /*ip*/, 9000);
-        //OutputStream outputStream = socket.getOutputStream();
 
-        //pw = new PrintWriter(socket.getOutputStream(), true);
-        //br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         String s;
 
-        //connection with the server
-        //pw.println(connect);
-
-        
-        //name
         pw.println(name);
-
-        //password
         pw.println(password);
 
         String server_answer = br.readLine();
         if (server_answer.equals("OK")) {
-            //releaseResources(pw,br,socket);
             return "Everything went good";
         } else {
-            releaseResources(pw,br,socket);
+            releaseResources(pw, br, socket);
             return "Something went wrong";
         }
-
     }
 
     public String registerClient() throws IOException {
@@ -99,87 +82,57 @@ public class Patient {
         byteBuffer = connect.getBytes();
         outputStream.write(byteBuffer);
 
-        /*
-            //ip
-            s = "" + ip;
-            byteBuffer = s.getBytes();
-            outputStream.write(byteBuffer);*/
-        //id
         s = "" + id;
-        //byteBuffer = s.getBytes();
         pw.println(s);
 
-        //name
-        //byteBuffer = name.getBytes();
         pw.println(name);
 
-        //age
         s = "" + age;
         byteBuffer = s.getBytes();
         pw.println(s);
 
-        //flex_ang
         s = "" + flex_ang;
-        //byteBuffer = s.getBytes();
         pw.println(s);
 
-        //turn_ang
         s = "" + turn_ang;
-        //byteBuffer = s.getBytes();
         pw.println(s);
 
-        //gender
         pw.println(gender);
-        
-        //weight
+
         s = "" + weight;
-        //byteBuffer = s.getBytes();
         pw.println(s);
 
-        //height
         s = "" + height;
-        //byteBuffer = s.getBytes();
         pw.println(s);
-        
+
         String server_answer = br.readLine();
         if (server_answer.equals("OK")) {
-            //releaseResources(pw,br,socket);
             return "Everything went good";
         } else {
-            releaseResources(pw,br,socket);
+            releaseResources(pw, br, socket);
             return "Something went wrong";
         }
-        
-        //releaseResources(pw, br, socket);
-        //System.exit(0);
-
     }
-    
-    public String updateClient() throws IOException{
-        
+
+    public String updateClient() throws IOException {
+
         System.out.println("Logging new Patient");
         System.out.println("Sending data");
         String s;
-        
-        s=""+turn_ang;
+
+        s = "" + turn_ang;
         pw.println(s);
-        
-        s = ""+flex_ang;
+
+        s = "" + flex_ang;
         pw.println(s);
-        
+
         String server_answer = br.readLine();
         if (server_answer.equals("OK")) {
-            //releaseResources(pw,br,socket);
             return "Everything went good";
         } else {
-            releaseResources(pw,br,socket);
+            releaseResources(pw, br, socket);
             return "Something went wrong";
         }
-        //Iterator it= bitalino.iterator();
-        /*
-        bitalino.connectReadBitalino("98:D3:31:FD:3B:92");
-        while (it.hasNext()){
-            s = ""+bilatino[i];*/
     }
 
     private static void releaseResources(PrintWriter pw,
@@ -195,7 +148,6 @@ public class Patient {
         } catch (IOException ex) {
             Logger.getLogger(Patient.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
 
     public int getId() {
@@ -261,12 +213,11 @@ public class Patient {
     public void setTurnang() {
         this.turn_ang = turn_ang;
     }
-    
+
     @Override
     public String toString() {
         return "Patient id=" + id + ", name=" + name + ", age=" + age + ", weight="
                 + weight + ", height=" + height + ", gender="
                 + gender + ", flexing angle=" + flex_ang + ", turning angle= " + turn_ang;
     }
-
 }
