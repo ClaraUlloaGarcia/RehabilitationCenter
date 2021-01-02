@@ -1,4 +1,3 @@
-
 package Interface;
 
 import Patient.ServerConnection;
@@ -19,8 +18,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class FXMLLogin1Controller implements Initializable {
@@ -32,7 +31,7 @@ public class FXMLLogin1Controller implements Initializable {
     private TextField userTextField;
     
     @FXML
-    private TextField passwordTextField;
+    private PasswordField passwordTextField;
     
     @FXML
     private void handleButtonAction(ActionEvent event) { //Botón Aceptar en la ventana Login
@@ -41,7 +40,7 @@ public class FXMLLogin1Controller implements Initializable {
         Socket serverSocket = ServerConnection.getInstance().getSocket();
         if(serverSocket == null) {
             Alert alert = new Alert(AlertType.INFORMATION);
-            alert.setContentText("Could not connect to server."); 
+            alert.setContentText("Could not connect to server"); 
             alert.show(); 
             return;
         }
@@ -69,9 +68,8 @@ public class FXMLLogin1Controller implements Initializable {
     }
     
     @FXML
-    private void openRegistrationScene(ActionEvent event) {
+    private void openRegistrationScene(ActionEvent event) { //Botón Nuevo Paciente en la ventana Login
         try {
-            //Botón Nuevo Paciente de la ventana Login
             Class clas = getClass();
             URL resourceURL = clas.getResource("FXMLRegister2.fxml");
             Parent root = FXMLLoader.load(resourceURL);

@@ -37,7 +37,6 @@ public class Patient {
         //bitalino = new BITalino();
 
         socket = new Socket("localhost" /*ip*/, 9000);
-        //OutputStream outputStream = socket.getOutputStream();
         pw = new PrintWriter(socket.getOutputStream(), true);
         br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 

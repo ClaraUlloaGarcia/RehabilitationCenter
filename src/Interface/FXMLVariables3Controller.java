@@ -1,4 +1,3 @@
-
 package Interface;
 
 import BITalino.BITalino;
@@ -25,8 +24,10 @@ public class FXMLVariables3Controller implements Initializable {
     
     @FXML
     TextField MACVariable;
+    
     @FXML
     TextField bendingVariable;
+    
     @FXML
     TextField turningVariable;
 
@@ -55,7 +56,7 @@ public class FXMLVariables3Controller implements Initializable {
             alert.show(); 
             return;
         }
-        Response response = new VariablesCommand (serverSocket).variableData(bitalinoData, bendingAddress, turningAddress);
+        Response response = new VariablesCommand(serverSocket).variableData(bitalinoData, bendingAddress, turningAddress);
          
         if(response.isSuccess()) {
             Alert alert = new Alert(AlertType.INFORMATION);
@@ -64,7 +65,7 @@ public class FXMLVariables3Controller implements Initializable {
         }
         else{
             Alert alert = new Alert(AlertType.INFORMATION);
-            alert.setContentText("Fail to register."); 
+            alert.setContentText("Fail to send data."); 
             alert.show(); 
         }
     }
@@ -81,8 +82,8 @@ public class FXMLVariables3Controller implements Initializable {
             int[] channelsToAcquire = {0}; 
             bitalino.start(channelsToAcquire);
 
-            //Read in total 50000 times
-            for (int j = 0; j < 50; j++) { //Record 0.05 seconds
+            //Read in total 500 times
+            for (int j = 0; j < 50; j++) {
                 System.out.println("J: " + j);
                 //Each time read a block of 10 samples 
                 int block_size=10;

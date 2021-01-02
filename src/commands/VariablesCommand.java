@@ -11,7 +11,7 @@ public class VariablesCommand extends Command {
 
     public Response variableData(List<Integer> bitalino, String flex_ang, String turn_ang) {
 
-        this.addData(bitalino.size() + "");
+        this.addData(bitalino.size() + ""); //Send to the server how much data from bitalino
         for (Integer bitalinoData : bitalino) {
             this.addData(bitalinoData.toString());
         }

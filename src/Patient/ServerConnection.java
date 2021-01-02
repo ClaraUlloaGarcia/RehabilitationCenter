@@ -9,9 +9,9 @@ public class ServerConnection {
 
     private String IP;
 
-    // Singleton
+    // Singleton: acceso global al servidor, quien quiera conectarse, que introduzca su IP
     private static ServerConnection connection = null;
-
+    
     private Socket socket;
 
     private ServerConnection() {
