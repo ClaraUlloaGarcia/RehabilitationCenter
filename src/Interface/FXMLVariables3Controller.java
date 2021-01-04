@@ -18,6 +18,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 public class FXMLVariables3Controller implements Initializable {
@@ -30,6 +32,13 @@ public class FXMLVariables3Controller implements Initializable {
     
     @FXML
     TextField turningVariable;
+    
+    @FXML
+    Button updateButton;
+    
+    @FXML
+    TextArea workout;
+    
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -38,6 +47,8 @@ public class FXMLVariables3Controller implements Initializable {
     
     @FXML
     private void update(ActionEvent event) {
+        
+        updateButton.setDisable(true);
         String macAddress = MACVariable.getText();
         String bendingAddress = bendingVariable.getText();
         String turningAddress = turningVariable.getText();
@@ -46,6 +57,7 @@ public class FXMLVariables3Controller implements Initializable {
              Alert alert = new Alert(AlertType.INFORMATION);
             alert.setContentText("Fail to read from bitalino."); 
             alert.show(); 
+            updateButton.setDisable(false);
             return;
         }
         
@@ -54,6 +66,7 @@ public class FXMLVariables3Controller implements Initializable {
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setContentText("Could not connect to server."); 
             alert.show(); 
+            updateButton.setDisable(false);
             return;
         }
         Response response = new VariablesCommand(serverSocket).variableData(bitalinoData, bendingAddress, turningAddress);
@@ -62,12 +75,18 @@ public class FXMLVariables3Controller implements Initializable {
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setContentText("Data sent."); 
             alert.show();
+            String workoutList = "";
+            for(String myWorkout:response.getData()) {
+                workoutList += myWorkout + "\n";
+            }
+            workout.setText(workoutList);
         }
         else{
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setContentText("Fail to send data."); 
             alert.show(); 
         }
+        updateButton.setDisable(false);
     }
     
     List<Integer> getBitalinoData(String macAddress) {
