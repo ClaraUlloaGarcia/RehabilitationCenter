@@ -67,7 +67,7 @@ public abstract class Command {
                 return Response.createSuccess();
             } else {
                 String total = "";
-                do {
+                do { //Leemos cuántas líneas
                     total += (char) response;
                     response = bufferedReader.read();
                 } while (response != '\n' && response != CODE_ERROR && response != CODE_OK);

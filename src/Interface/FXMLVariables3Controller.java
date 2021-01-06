@@ -39,16 +39,16 @@ public class FXMLVariables3Controller implements Initializable {
     @FXML
     TextArea workout;
     
-
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    } 
     
     @FXML
     private void update(ActionEvent event) {
         
-        updateButton.setDisable(true);
+        updateButton.setDisable(true); //Deshabilitar botón update hasta que se hayan enviado todos los datos del Bitalino
         String macAddress = MACVariable.getText();
         String bendingAddress = bendingVariable.getText();
         String turningAddress = turningVariable.getText();
