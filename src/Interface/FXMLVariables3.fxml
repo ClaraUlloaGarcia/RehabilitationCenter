@@ -14,10 +14,10 @@
    <children>
       <TextField fx:id="bendingVariable" layoutX="321.0" layoutY="104.0" />
       <TextField fx:id="turningVariable" layoutX="321.0" layoutY="149.0" />
-      <Label layoutX="152.0" layoutY="108.0" text="BENDING ANGLE" />
-      <Label layoutX="152.0" layoutY="153.0" text="TURNING ANGLE" />
+      <Label layoutX="148.0" layoutY="104.0" prefHeight="25.0" prefWidth="99.0" text="BENDING ANGLE" />
+      <Label layoutX="148.0" layoutY="149.0" prefHeight="25.0" prefWidth="99.0" text="TURNING ANGLE" />
       <Button fx:id="updateButton" layoutX="272.0" layoutY="318.0" mnemonicParsing="false" onAction="#update" text="Update" />
-      <Label layoutX="139.0" layoutY="61.0" text="Bitalino MAC Address:" />
+      <Label layoutX="133.0" layoutY="57.0" prefHeight="25.0" prefWidth="129.0" text="Bitalino MAC Address:" />
       <TextField fx:id="MACVariable" layoutX="321.0" layoutY="57.0" />
       <TextArea fx:id="workout" layoutX="124.0" layoutY="193.0" prefHeight="110.0" prefWidth="351.0" />
    </children>
