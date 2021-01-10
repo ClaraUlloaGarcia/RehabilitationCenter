@@ -34,7 +34,7 @@ public class FXMLLogin1Controller implements Initializable {
     private PasswordField passwordTextField;
     
     @FXML
-    private void handleButtonAction(ActionEvent event) { //Botón Aceptar en la ventana Login
+    private void handleButtonAction(ActionEvent event) { //Accept Button in Login window
         String user = userTextField.getText();
         String password = passwordTextField.getText();
         Socket serverSocket = ServerConnection.getInstance().getSocket();
@@ -44,7 +44,9 @@ public class FXMLLogin1Controller implements Initializable {
             alert.show(); 
             return;
         }
-        Response response = new LoginCommand (serverSocket).login(user, password);
+        
+        LoginCommand loginCommand = new LoginCommand (serverSocket);
+        Response response = loginCommand.login(user, password);
          
         if (response.isSuccess()) {
             try {
@@ -68,7 +70,7 @@ public class FXMLLogin1Controller implements Initializable {
     }
     
     @FXML
-    private void openRegistrationScene(ActionEvent event) { //Botón Nuevo Paciente en la ventana Login
+    private void openRegistrationScene(ActionEvent event) { //New patient Button in Login window
         try {
             Class clas = getClass();
             URL resourceURL = clas.getResource("FXMLRegister2.fxml");

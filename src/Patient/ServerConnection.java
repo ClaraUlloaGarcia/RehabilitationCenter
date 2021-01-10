@@ -5,11 +5,11 @@ import java.net.Socket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+// Singleton: global access to the server, once it has introduced its IP.
 public class ServerConnection {
 
     private String IP;
 
-    // Singleton: acceso global al servidor, quien quiera conectarse, que introduzca su IP
     private static ServerConnection connection = null;
     
     private Socket socket;

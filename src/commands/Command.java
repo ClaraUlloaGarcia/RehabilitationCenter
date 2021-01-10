@@ -31,7 +31,7 @@ public abstract class Command {
             Logger.getLogger(Command.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
     public void addData(String line) {
         data.add(line);
     }
@@ -59,15 +59,17 @@ public abstract class Command {
     protected Response receiveData() {
         try {
             int response = bufferedReader.read();
-
+            
             if (response == CODE_ERROR) {
                 return Response.createError();
-
+                
             } else if (response == CODE_OK) {
                 return Response.createSuccess();
+                
             } else {
                 String total = "";
-                do { //Leemos cuántas líneas
+                //Reading number of lines that are going to be read
+                do { 
                     total += (char) response;
                     response = bufferedReader.read();
                 } while (response != '\n' && response != CODE_ERROR && response != CODE_OK);
@@ -77,6 +79,7 @@ public abstract class Command {
                     return Response.createError();
                 }
 
+                //total is the number of lines
                 int totalData = Integer.parseInt(total);
                 Response responseData = new Response();
 
@@ -85,7 +88,7 @@ public abstract class Command {
                     responseData.appendData(line);
                 }
                 response = bufferedReader.read();
-                if (response == 0) {
+                if (response == CODE_OK) {
                     responseData.setSuccess(true);
                 } else {
                     responseData.setSuccess(false);

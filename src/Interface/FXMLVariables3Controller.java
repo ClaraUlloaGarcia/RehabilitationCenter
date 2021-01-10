@@ -24,6 +24,7 @@ import javafx.scene.control.TextField;
 
 public class FXMLVariables3Controller implements Initializable {
     
+    //Properties
     @FXML
     TextField MACVariable;
     
@@ -42,13 +43,13 @@ public class FXMLVariables3Controller implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
     } 
     
     @FXML
     private void update(ActionEvent event) {
         
-        updateButton.setDisable(true); //Deshabilitar botón update hasta que se hayan enviado todos los datos del Bitalino
+        updateButton.setDisable(true); //Disable Update button until all data has been sent
         String macAddress = MACVariable.getText();
         String bendingAddress = bendingVariable.getText();
         String turningAddress = turningVariable.getText();
@@ -69,7 +70,9 @@ public class FXMLVariables3Controller implements Initializable {
             updateButton.setDisable(false);
             return;
         }
-        Response response = new VariablesCommand(serverSocket).variableData(bitalinoData, bendingAddress, turningAddress);
+        
+        VariablesCommand variablesCommand = new VariablesCommand(serverSocket);
+        Response response = variablesCommand.variableData(bitalinoData, bendingAddress, turningAddress);
          
         if(response.isSuccess()) {
             Alert alert = new Alert(AlertType.INFORMATION);
@@ -124,4 +127,5 @@ public class FXMLVariables3Controller implements Initializable {
         }
         return null;
     }
+    
 }
